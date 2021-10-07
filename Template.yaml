@@ -1,0 +1,88 @@
+- platform: mqtt
+  name: Phoniebox State
+  state_topic: 'phoniebox/state'
+  icon: mdi:power
+  unique_id: phoniebox_state
+
+- platform: mqtt
+  name: Phoniebox Disk Total
+  state_topic: 'phoniebox/disk_total'
+  icon: mdi:harddisk
+  unique_id: phoniebox_disktotal
+
+- platform: mqtt
+  name: Phoniebox Disk Available
+  state_topic: 'phoniebox/disk_avail'
+  icon: mdi:harddisk
+  unique_id: phoniebox_diskavail
+
+- platform: mqtt
+  name: Phoniebox Volume
+  state_topic: 'phoniebox/attribute/volume'
+  icon: mdi:volume-high
+  unique_id: phoniebox_volume
+
+- platform: mqtt
+  name: Phoniebox Player State
+  state_topic: 'phoniebox/attribute/state'
+  unique_id: phoniebox_playerstate
+
+- platform: mqtt
+  name: Phoniebox Mute
+  state_topic: 'phoniebox/attribute/mute'
+  icon: mdi:volume-off
+  unique_id: phoniebox_mute
+
+- platform: mqtt
+  name: Phoniebox Artist
+  state_topic: 'phoniebox/attribute/artist'
+  icon: mdi:account-music
+  unique_id: phoniebox_artist
+
+- platform: mqtt
+  name: Phoniebox Title
+  state_topic: 'phoniebox/attribute/title'
+  icon: mdi:format-title
+  unique_id: phoniebox_title
+
+- platform: mqtt
+  name: Phoniebox Album
+  state_topic: 'phoniebox/attribute/album'
+  icon: mdi:album
+  unique_id: phoniebox_album
+
+- platform: mqtt
+  name: Phoniebox Track
+  state_topic: 'phoniebox/attribute/track'
+  icon: mdi:counter
+  unique_id: phoniebox_track
+
+- platform: mqtt
+  name: Phoniebox Elapsed
+  state_topic: 'phoniebox/attribute/elapsed'
+  icon: mdi:clock-outline
+  unique_id: phoniebox_elapsed
+
+- platform: mqtt
+  name: Phoniebox Duration
+  state_topic: 'phoniebox/attribute/duration'
+  icon: mdi:clock-outline
+  unique_id: phoniebox_duration
+
+- platform: mqtt
+  name: Phoniebox Remaining Idle
+  state_topic: 'phoniebox/attribute/remaining_idle'
+  icon: mdi:clock-outline
+  unique_id: phoniebox_remaining_idle
+
+- platform: mqtt
+  name: Phoniebox Idletime
+  state_topic: 'phoniebox/attribute/idletime'
+  icon: mdi:clock-outline
+  unique_id: phoniebox_idletime
+
+- platform: mqtt
+  name: Phoniebox Temperature
+  state_topic: 'phoniebox/attribute/temperature'
+  icon: mdi:clock-outline
+  unique_id: phoniebox_temperature
