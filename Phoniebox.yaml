@@ -157,6 +157,8 @@ card:
         service_data:
           topic: phoniebox/cmd/reboot
         haptic: medium
+      confirmation:
+        text: Soll die Box neu gestartet werden?
       hold_action:
         action: none
     - aspect_ratio: 1/1
@@ -187,6 +189,8 @@ card:
         service_data:
           topic: phoniebox/cmd/shutdown
         haptic: medium
+      confirmation:
+        text: Soll die Box ausgeschaltet werden?
       hold_action:
         action: none
     - aspect_ratio: 1/1
