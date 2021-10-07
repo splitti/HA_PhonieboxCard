@@ -5,6 +5,18 @@
   unique_id: phoniebox_state
 
 - platform: mqtt
+  name: Phoniebox Edition
+  state_topic: 'phoniebox/edition'
+  icon: mdi:spotify
+  unique_id: phoniebox_edition
+
+- platform: mqtt
+  name: Phoniebox Version
+  state_topic: 'phoniebox/version'
+  icon: mdi:numeric
+  unique_id: phoniebox_version
+
+- platform: mqtt
   name: Phoniebox Disk Total
   state_topic: 'phoniebox/disk_total'
   icon: mdi:harddisk
@@ -34,6 +46,37 @@
   unique_id: phoniebox_mute
 
 - platform: mqtt
+  name: Phoniebox Repeat
+  state_topic: 'phoniebox/attribute/repeat'
+  icon: mdi:repeat
+  unique_id: phoniebox_repeat
+
+- platform: mqtt
+  name: Phoniebox Random
+  state_topic: 'phoniebox/attribute/random'
+  icon: mdi:arrow-decision
+  unique_id: phoniebox_random
+
+- platform: mqtt
+  name: Phoniebox File
+  state_topic: 'phoniebox/attribute/file'
+  icon: mdi:file
+  unique_id: phoniebox_file
+
+- platform: mqtt
+  name: Phoniebox Album Artist
+  state_topic: 'phoniebox/attribute/albumartist'
+  icon: mdi:account-music
+  unique_id: phoniebox_albumartist
+
+- platform: mqtt
+  name: Phoniebox Album Artist
+  state_topic: 'phoniebox/attribute/albumartist'
+  icon: mdi:account-music
+  unique_id: phoniebox_albumartist
+
+
+- platform: mqtt
   name: Phoniebox Artist
   state_topic: 'phoniebox/attribute/artist'
   icon: mdi:account-music
@@ -56,6 +99,54 @@
   state_topic: 'phoniebox/attribute/track'
   icon: mdi:counter
   unique_id: phoniebox_track
+
+- platform: mqtt
+  name: Phoniebox Track Date
+  state_topic: 'phoniebox/attribute/trackdate'
+  icon: mdi:calendar-range
+  unique_id: phoniebox_trackdate
+
+- platform: mqtt
+  name: Phoniebox Last Card
+  state_topic: 'phoniebox/attribute/last_card'
+  icon: mdi:smart-card
+  unique_id: phoniebox_last_card
+
+- platform: mqtt
+  name: Phoniebox Max Volume
+  state_topic: 'phoniebox/attribute/maxvolue'
+  icon: mdi:volume-high
+  unique_id: phoniebox_maxvolue
+
+- platform: mqtt
+  name: Phoniebox Volume Step
+  state_topic: 'phoniebox/attribute/volstep'
+  icon: mdi:volume-medium
+  unique_id: phoniebox_volstep
+
+- platform: mqtt
+  name: Phoniebox Rfid Service
+  state_topic: 'phoniebox/attribute/rfid'
+  icon: mdi:cast-audio-variant
+  unique_id: phoniebox_rfid
+
+- platform: mqtt
+  name: Phoniebox GPIO Service
+  state_topic: 'phoniebox/attribute/gpio'
+  icon: mdi:raspberry-pi
+  unique_id: phoniebox_gpio
+
+- platform: mqtt
+  name: Phoniebox Minutes to stop
+  state_topic: 'phoniebox/attribute/remaining_stopafter'
+  icon: mdi:timer
+  unique_id: phoniebox_remaining_stopafter
+
+- platform: mqtt
+  name: Phoniebox Minutes to shutdown
+  state_topic: 'phoniebox/attribute/remaining_shutdownafter'
+  icon: mdi:timer
+  unique_id: phoniebox_remaining_shutdownafter
 
 - platform: mqtt
   name: Phoniebox Elapsed
