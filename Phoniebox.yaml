@@ -1,0 +1,510 @@
+type: conditional
+conditions:
+  - entity: sensor.phoniebox_state
+    state: online
+card:
+  type: picture-elements
+  image: local/phoniebox/background.jpg
+  style: |
+    ha-card {
+      --ha-card-background: none !important;
+      box-shadow: none !important;
+    }                          
+  elements:
+    - type: custom:button-card
+      show_icon: false
+      show_name: false
+      aspect_ratio: 4/1
+      styles:
+        card:
+          - background: '#ffffff'
+          - filter: opacity(60%)
+      style:
+        '--ha-card-border-radius': 0px 0px 20px 20px
+        height: 100%
+        width: 100%
+        top: 120%
+        left: 50%
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:skip-next-circle
+      type: custom:button-card
+      size: 100%
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/playernext
+        haptic: medium
+      style:
+        right: '-4%'
+        top: 10%
+        height: 15%
+        width: 15%
+      state:
+        - styles:
+            icon:
+              - filter: opacity(100%)
+              - transition: all 0.5s ease
+          value: paused
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 80%
+        icon:
+          - filter: opacity(80%)
+          - transition: all 0.5s ease
+          - color: '#FFFFFF'
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:skip-previous-circle
+      type: custom:button-card
+      size: 100%
+      style:
+        right: 30%
+        top: 10%
+        height: 15%
+        width: 15%
+      state:
+        - styles:
+            icon:
+              - filter: opacity(100%)
+              - transition: all 0.5s ease
+          value: paused
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - filter: opacity(80%)
+          - transition: all 0.5s ease
+          - color: '#FFFFFF'
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/playerprev
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: |
+        [[[
+          if ( states['sensor.phoniebox_player_state'].state == "play" ) return "mdi:pause-circle";
+          else return "mdi:play-circle";
+        ]]]
+      type: custom:button-card
+      size: 100%
+      style:
+        right: 13%
+        top: 10%
+        height: 15%
+        width: 15%
+      state:
+        - styles:
+            icon:
+              - filter: opacity(100%)
+              - transition: all 0.5s ease
+          value: paused
+          icon: mdi:play-circle
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - filter: opacity(80%)
+          - transition: all 0.5s ease
+          - color: '#FFFFFF'
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/playerpause
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:restart
+      type: custom:button-card
+      size: 90%
+      style:
+        right: 10%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 80%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/reboot
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:power-standby
+      type: custom:button-card
+      size: 90%
+      style:
+        right: 0%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/shutdown
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:music-circle-outline
+      type: custom:button-card
+      size: 90%
+      style:
+        right: 20%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: url
+        url_path: http://phoniebox.local/
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:spotify
+      type: custom:button-card
+      size: 90%
+      style:
+        right: 30%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: '#1DB954'
+      tap_action:
+        action: url
+        url_path: http://phoniebox.local:6680/iris/
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:volume-mute
+      type: custom:button-card
+      size: 90%
+      style:
+        left: 8%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/mute
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:volume-minus
+      type: custom:button-card
+      size: 90%
+      style:
+        left: 18%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/volumedown
+        haptic: medium
+      hold_action:
+        action: none
+    - aspect_ratio: 1/1
+      show_name: false
+      show_icon: true
+      icon: mdi:volume-plus
+      type: custom:button-card
+      size: 90%
+      style:
+        left: 28%
+        top: 88%
+        height: 8%
+        width: 8%
+        .: |
+          ha-card {
+            background-color: rgb(255,255,255,0.8) !important;
+            box-shadow: none !important;
+          }
+      styles:
+        card:
+          - padding: 0px
+          - border-radius: 50%
+        icon:
+          - color: var(--text-color)
+      tap_action:
+        action: call-service
+        service: mqtt.publish
+        service_data:
+          topic: phoniebox/cmd/volumeup
+        haptic: medium
+      hold_action:
+        action: none
+    - type: custom:hui-markdown-card
+      content: '# {{ states.sensor.phoniebox_title.state }}'
+      style:
+        height: 50px
+        width: 100%
+        top: 74%
+        left: 50%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 12px;
+              font-weight: bold;
+              font-family: Helvetica;
+              letter-spacing: '-1.02';
+              white-space: nowrap;
+            }
+    - type: custom:hui-markdown-card
+      content: '# {{ states.sensor.phoniebox_artist.state }}'
+      style:
+        height: 50px
+        width: 100%
+        top: 79%
+        left: 50%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 10.5px;
+              font-weight: thin;
+              font-family: Helvetica;
+              letter-spacing: '-0.01em';
+              white-space: nowrap;
+            }
+    - type: custom:hui-markdown-card
+      content: <h1>{{ states.sensor.phoniebox_elapsed.state }}</h1>
+      style:
+        height: 50px
+        width: 10%
+        top: 11%
+        left: 5%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 11px;
+              color: rgb(255,255,255,0.7) !important;
+              font-weight: thin;
+              font-family: Courier;
+              letter-spacing: '-0.01em';
+            }
+    - type: custom:hui-markdown-card
+      content: <h1>{{ states.sensor.phoniebox_volume.state }}/100</h1>
+      style:
+        height: 50px
+        width: 10%
+        top: 15%
+        left: 5%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 11px;
+              color: rgb(255,255,255,0.7) !important;
+              font-weight: thin;
+              font-family: Courier;
+              letter-spacing: '-0.01em';
+              text-align: right;
+            }
+    - type: custom:hui-markdown-card
+      content: <h1>Phoniebox</h1>
+      style:
+        height: 50px
+        width: 100%
+        top: 63%
+        right: '-50%'
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 25;
+              color: rgb(255,255,255,0.4) !important;
+              font-weight: thin;
+              font-family: Arial;
+              letter-spacing: '-0.01em';
+              text-align: right;
+            }
+    - type: custom:hui-markdown-card
+      content: >-
+        <h1>Remain Idle {{ states.sensor.phoniebox_remaining_idle.state }}
+        Mins</h1>
+      style:
+        height: 50px
+        width: 100%
+        top: 65%
+        left: 50%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 11px;
+              color: rgb(255,255,255,0.5) !important;
+              font-weight: thin;
+              font-family: Courier;
+              letter-spacing: '-0.01em';
+            }
+    - type: custom:hui-markdown-card
+      content: <h1>{{ states.sensor.phoniebox_temperature.state }}</h1>
+      style:
+        height: 50px
+        width: 100%
+        top: 55%
+        left: 50%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 11px;
+              color: rgb(255,255,255,0.5) !important;
+              font-weight: thin;
+              font-family: Courier;
+              letter-spacing: '-0.01em';
+            }
+    - type: custom:hui-markdown-card
+      content: <h1>Free {{ states.sensor.phoniebox_disk_available.state }} GB</h1>
+      style:
+        height: 50px
+        width: 100%
+        top: 60%
+        left: 50%
+        .: |
+          ha-card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+          }
+        ha-markdown:
+          $: |
+            h1 {
+              font-size: 11px;
+              color: rgb(255,255,255,0.5) !important;
+              font-weight: thin;
+              font-family: Courier;
+              letter-spacing: '-0.01em';
+            }
